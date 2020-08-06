@@ -14,3 +14,10 @@
     margin: 5px;
     line-height: 42px;
 }
+
+.login-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
