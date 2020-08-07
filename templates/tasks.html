@@ -76,17 +76,20 @@
                         {% endif %}
                     {% endif %}
                 {% endfor %}
-
-                {% if tasks|selectattr('created_by', 'equalto', session.user)|list|count == 0 %}
-                    <h3 class="red-text text-darken-4 center-align message-pad-fix">No Tasks Yet</h3>            
+                {% if session.user|lower != "adminf" %}
+                    {% if tasks|selectattr('created_by', 'equalto', session.user)|list|count == 0 %}
+                        <h3 class="red-text text-darken-4 center-align message-pad-fix">No Tasks Yet</h3>            
+                    {% endif %}
                 {% endif %}
             </ul>
         {% else %}
             <h3 class="red-text text-darken-4 center-align">No Results Found</h3>
         {% endif %}
     {% else %}
-        <div class="login-container">
-            <h3 class="red-text text-darken-4 center-align">Please Log In or Register to Start</h3>
+        <div class="row card-panel grey lighten-5 welcome-container">
+            <h2 class="light-blue-text text-darken-4 center-align">Welcome to My Task Manager</h2>
+            <h5 class="red-text text-darken-4 center-align welcome-container">Please <a href="{{ url_for('login') }}" class="light-blue-text text-darken-4">
+                Log In</a> or <a href="{{ url_for('register') }}" class="light-blue-text text-darken-4">Register</a> to Start</h5>
         </div>
     {% endif %}
 
